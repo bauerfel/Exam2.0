@@ -116,3 +116,53 @@ https://huggingface.co/spaces/bauerfel/JellyFish
 
 ### Result of user validation 
 Aufgrund fehlender Quallen in meiner Umgebung wurden Bilder von Quallen aus dem Internet verwendet. 
+
+Result of User Validation: JellyFish Erkenner
+
+Übersicht und Zweck:
+Das Ziel dieser Benutzervalidierung war es, die Benutzerfreundlichkeit und Genauigkeit des JellyFish-Erkenners zu bewerten, der auf Hugging Face gehostet wird. Die Ergebnisse sollen als Grundlage für weitere Verbesserungen des Erkennungssystems dienen.
+
+Testmethodik:
+Die Validierung wurde mit 2 Teilnehmern durchgeführt, die verschiedene Quallenbilder hochgeladen und die Ergebnisse des Erkennungssystems bewertet haben. Jeder Teilnehmer hatte die Aufgabe, mindestens 5 Bilder zu testen und Feedback zu geben.
+
+Teilnehmer:
+Die Teilnehmer waren zwischen 24 und 25 Jahre alt, mit unterschiedlichem technischen Hintergrund:
+
+1 Anfänger
+1 mittelmässig erfahren
+Durchgeführte Tests:
+
+Testfälle:
+
+Hochladen von Quallenbildern
+Überprüfen der Erkennungsergebnisse
+Bewertung der Genauigkeit
+Feedback zu Benutzerfreundlichkeit
+Ergebnisse:
+
+Jeder Teilnehmer testete das System mit 5 unterschiedlichen Bildern von Quallenarten.
+Benutzerfeedback:
+
+Qualitatives Feedback:
+
+Insgesamt wurde das Interface als intuitiv empfunden, jedoch gab es Schwierigkeiten beim Hochladen grosser Bilddateien. Die Erkennungsgeschwindigkeit war gut, aber die Genauigkeit variierte je nach Bildqualität.
+Fragebögen:
+
+0% der Benutzer fanden die Erkennungsergebnisse zufriedenstellend.
+100% gaben an, dass sie das Tool regelmässig nutzen würden, wenn die Genauigkeit verbessert wird.
+Analyse und Interpretation:
+
+Erkennungsergebnisse:
+
+Die Erkennungsgenauigkeit lag bei durchschnittlich 75%. Fehler traten hauptsächlich bei Bildern auf, die schlechte Beleuchtung oder eine geringe Auflösung hatten.
+Benutzerfreundlichkeit:
+
+Das Interface wurde als einfach und benutzerfreundlich bewertet. Probleme traten beim Hochladen grosser Dateien auf, was zu Verzögerungen und gelegentlichen Fehlermeldungen führte.
+Empfehlungen:
+Erkennung verbessern:
+Optimierung des Erkennungsalgorithmus für bessere Ergebnisse bei niedrigerer Bildqualität.
+Bildupload:
+Verbesserung des Bilduploads, um auch grosse Dateien ohne Verzögerungen zu unterstützen.
+Feedbackmechanismus:
+Implementierung eines Mechanismus, um Benutzerfeedback direkt nach jedem Erkennungsvorgang zu sammeln.
+
