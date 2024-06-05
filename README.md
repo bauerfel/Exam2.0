@@ -49,14 +49,70 @@ Die Augmentation horizontal Flip die Bilder wilkürlich und die random Rotation 
 ## Model Training
 
 ### Data augmentation (code)
+
 ### Model Training: From scratch or transfer learning, fine tuning (code)
 
 ### Comparison of performance (code / text) 
-Ich habe zwei Modelle als grundvoraussetzung verwendet. zum einen das InceptionResNetV2 Modell zum anderen das # EfficentNetB3 Modell
+Ich habe drei Modelle als grundvoraussetzung verwendet.Ich habe die Modelle InceptionResNetV2, EfficentNetB3 Modell und Xception
 
 Vergleich:
-Als Die Krundvoraussetzungen sind genau gleich. (selber Datensatz usw.)
+ Die Grundvoraussetzungen sind genau gleich. (selber Datensatz usw.)
 
 #### InceptionResNetV2 Modell
-Das InceptionResNetV2 Modell hat eine deutlich höhere Accuracy erreicht. Sie erreicht ein genauigkeit von 83 Prozent, was star
+Das InceptionResNetV2 Modell hat eine deutlich höhere Accuracy als das EfficentNetB3 Modell erreicht. Die Accuracy war bei 83 Prozent.
 #### EfficentNetB3 Modell
+Dieses Modell ist mit abstand das ungenauste weil es nur eine Accuracy von 25 Prozent hat.
+### Xception Modell
+Dieses Modell hat die Beste Accuracy erreicht, mit einem Wert von 94.44 Prozent.
+
+### Fazit 
+das Letzte Modell Xception hat am besten abgeschnitten, deshalb wird auch dieses Modell im Frontend verwendet.
+
+## Model Application
+
+### Frontend and Backend
+app.py Code:
+
+import gradio as gr
+import tensorflow as tf
+from PIL import Image
+import numpy as np
+ 
+labels = ['barrel_jellyfish','blue_jellyfish','compass_jellyfish','lions_mane_jellyfish','mauve_stinger_jellyfish','Moon_jellyfish']
+ 
+def predict_jellyfish_type(uploaded_file):
+    
+    if uploaded_file is None:
+        return "No file uploaded."
+   
+    model = tf.keras.models.load_model('Jellyfish_transferlearning.keras')
+    # Load the image from the file path
+    with Image.open(uploaded_file) as img:
+        img = img.resize((150, 150)).convert('RGB')  # Convert image to RGB
+        img_array = np.array(img)
+        
+ 
+        prediction = model.predict(np.expand_dims(img_array, axis=0))
+        confidences = {labels[i]: np.round(float(prediction[0][i]), 2) for i in range(len(labels))}
+ 
+        return confidences
+ 
+ 
+// # Define the Gradio interface
+iface = gr.Interface(
+    fn=predict_jellyfish_type,  # Function to process the input
+    inputs=gr.File(label="Upload File"),  # File upload widget
+    outputs="text",  # Output type
+    title="Jellyfish Classifier",  # Title of the interface
+    examples=["images/barrel_jellyfish.jpeg", "images/blue_jellyfish.jpeg", "images/compass_jellyfish.jpeg", "images/lions_mane_jellyfish.jpeg", "images/mauve_stinger_jellyfish.jpeg", "images/Moon_jellyfish.jpeg"],   
+    description="Upload a picture of a Jellyfish (barrel Gefährlichkeit: Niedrig, blue Gefährlichkeit: Moderat, compass Gefährlichkeit: Moderat, lions mane Gefährlichkeit: Hoch, mauve stinger Gefährlichkeit: Moderat bis Hoch, Moon Gefährlichkeit: Niedrig) "  # Description of the interface
+)
+ 
+// # Launch the interface
+iface.launch()
+
+### Demo
+https://huggingface.co/spaces/bauerfel/JellyFish
+
+### Result of user validation 
+Aufgrund fehlender Quallen in meiner Umgebung wurden Bilder von Quallen aus dem Internet verwendet. 
